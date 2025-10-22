@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEKAP - Perlindungan Kekerasan Anak dan Perempuan</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #E74C3C;
+            --accent-color: #3498DB;
+            --success-color: #27AE60;
+            --warning-color: #F39C12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #FFD700 !important;
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><circle fill="%23e6f3ff" cx="200" cy="150" r="80"/><circle fill="%23cce7ff" cx="800" cy="250" r="120"/><circle fill="%23b3dbff" cx="1000" cy="100" r="60"/><path fill="%2399cfff" d="M0,400 Q300,350 600,400 T1200,400 L1200,600 L0,600 Z"/></svg>');
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-custom {
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .btn-emergency {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-emergency:hover {
+            background: #C0392B;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+            padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .feature-card li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .emergency-section {
+            background: #fff5f5;
+            border-left: 5px solid var(--secondary-color);
+            padding: 2rem 2rem 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(231,76,60,0.07);
+        }
+
+        .emergency-title {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hotline-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .hotline-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .hotline-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+        }
+
+        .hotline-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #BDC3C7;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495E;
+            color: #BDC3C7;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+
+        .btn-submit {
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+        /* --- Pelaporan Kekerasan --- */
+        .emergency-section {
+            background: #fff5f5;
+            border-left: 5px solid var(--secondary-color);
+            padding: 2rem 2rem 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(231,76,60,0.07);
+        }
+
+        /* --- Edukasi & Pencegahan --- */
+        #edukasi .video-container {
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(52,152,219,0.10);
+            margin-bottom: 1.5rem;
+        }
+        #edukasi .feature-card {
+            background: #f8fafc;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 12px rgba(52,152,219,0.07);
+        }
+        #edukasi .feature-card h4 {
+            color: var(--accent-color);
+        }
+        #edukasi .btn-primary {
+            margin-top: 1rem;
+            border-radius: 25px;
+            padding: 10px 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .btn-custom {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+            
+            .hotline-numbers {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            #edukasi .video-container,
+            #edukasi .feature-card {
+                margin-bottom: 2rem;
+            }
+            .emergency-section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-shield-alt me-2"></i>DEKAP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pelaporan">Pelaporan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#edukasi">Edukasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#artikel">Artikel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hotline">Hotline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#akun" data-bs-toggle="modal" data-bs-target="#loginModal">Akun</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">DEKAP</h1>
+                <p class="hero-subtitle"><b>Digitalisasi dan Edukasi Kekerasan Anak dan Perempuan</b></p>
+                <p style="text-align: justify;"> Di tengah badai kekerasan, Anda tidak sendiri. Kami hadir sebagai platform terpercaya yang berdedikasi penuh untuk memberikan perlindungan komprehensif, edukasi yang memberdayakan, dan dukungan tanpa henti bagi para korban kekerasan. Dengan pendekatan yang holistik dan penuh empati, kami berkomitmen untuk menciptakan ruang aman di mana setiap individu dapat memulihkan diri, memahami hak-hak mereka, dan menemukan kembali kekuatan untuk bangkit.</p>
+                <div class="hero-buttons">
+                    <a href="#pelaporan" class="btn-custom btn-emergency">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Lapor Sekarang
+                    </a>
+                    <a href="#hotline" class="btn-custom btn-outline-light">
+                        <i class="fas fa-phone me-2"></i>Hotline Darurat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Layanan Kami</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-flag feature-icon"></i>
+                        <h4>Pelaporan Aman</h4>
+                        <p>Sistem pelaporan yang aman dan terpercaya untuk korban kekerasan dengan perlindungan identitas penuh.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-graduation-cap feature-icon"></i>
+                        <h4>Edukasi & Pencegahan</h4>
+                        <p>Program edukasi komprehensif untuk meningkatkan kesadaran dan mencegah kekerasan di masyarakat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-headset feature-icon"></i>
+                        <h4>Dukungan 24/7</h4>
+                        <p>Tim konselor profesional siap membantu kapan saja untuk memberikan dukungan psikologis dan hukum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">1,247</span>
+                        <span class="stat-label">Kasus Ditangani</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Layanan Aktif</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Tingkat Kepuasan</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">156</span>
+                        <span class="stat-label">Mitra Organisasi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pelaporan Section -->
+    <section id="pelaporan" class="section">
+        <div class="container">
+            <h2 class="section-title">Pelaporan Kekerasan</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="emergency-section">
+                        <div class="emergency-title">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Situasi Darurat?
+                        </div>
+                        <p>Jika Anda atau seseorang yang Anda kenal sedang dalam bahaya langsung, segera hubungi nomor darurat atau lapor melalui formulir di bawah ini.</p>
+                        <button class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#reportModal">
+                            <i class="fas fa-flag me-2"></i>Buat Laporan
+                        </button>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <div class="feature-card">
+                        <h4>Keamanan & Privasi Terjamin</h4>
+                        <p>Semua laporan ditangani dengan kerahasiaan penuh. Identitas pelapor dilindungi dan data dienkripsi dengan standar keamanan tinggi.</p>
+                        <ul class="text-start mt-3">
+                            <li>Laporan dapat dibuat secara anonim</li>
+                            <li>Data dienkripsi end-to-end</li>
+                            <li>Tim profesional tersedia 24/7</li>
+                            <li>Tindak lanjut sesuai prosedur hukum</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <h4>Jenis Kekerasan</h4>
+                        <div class="text-start">
+                            <p><strong>Kekerasan Fisik:</strong> Pemukulan, penyiksaan, penganiayaan</p>
+                            <p><strong>Kekerasan Psikis:</strong> Ancaman, intimidasi, penghinaan</p>
+                            <p><strong>Kekerasan Seksual:</strong> Pelecehan, pemerkosaan, eksploitasi</p>
+                            <p><strong>Kekerasan Ekonomi:</strong> Pembatasan akses ekonomi, eksploitasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edukasi Section -->
+    <section id="edukasi" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Edukasi & Pencegahan</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ej87IFvvr1Q?si=HhlckXCzYUuOmzb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="feature-card">
+                        <h4>Program Edukasi</h4>
+                        <p>Kami menyediakan berbagai program edukasi untuk meningkatkan kesadaran masyarakat tentang pencegahan kekerasan.</p>
+                        <ul class="text-start">
+                            <li>Workshop untuk orang tua dan pendidik</li>
+                            <li>Seminar kesadaran di sekolah dan universitas</li>
+                            <li>Pelatihan untuk aparat penegak hukum</li>
+                            <li>Kampanye publik melalui media sosial</li>
+                        </ul>
+                        <a href="https://www.unicef.org/indonesia/id/laporan/program-edukasi-pencegahan-kekerasan" target="_blank" class="btn btn-primary">Daftar Program</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artikel Section -->
+    <section id="artikel" class="section">
+        <div class="container">
+            <h2 class="section-title">Artikel & Berita</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=200&fit=crop" alt="Anak-anak bermain aman" style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="article-content">
+                            <h5 class="article-title">Mengenali Tanda-tanda Kekerasan pada Anak</h5>
+                            <p class="article-excerpt">Pelajari bagaimana mengenali tanda-tanda kekerasan pada anak dan langkah-langkah yang harus diambil...</p>
+                            <div class="article-meta">
+                                <i class="fas fa-calendar me-2"></i>15 Maret 2024
+                                <i class="fas fa-user ms-3 me-2"></i>Dr. Sarah Johnson
+                            </div>
+                            <a href="https://indonesiabaik.id/motion_grafis/kenali-tanda-tanda-kemungkinan-anak-jadi-korban-kekerasan" target="_blank" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=200&fit=crop" alt="Dukungan untuk korban kekerasan" style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="article-content">
+                            <h5 class="article-title">Mendampingi Korban Kekerasan: Panduan Praktis</h5>
+                            <p class="article-excerpt">Tips dan strategi untuk mendampingi korban kekerasan dengan empati dan profesionalisme...</p>
+                            <div class="article-meta">
+                                <i class="fas fa-calendar me-2"></i>10 Maret 2024
+                                <i class="fas fa-user ms-3 me-2"></i>Prof. Ahmad Hidayat
+                            </div>
+                            <a href="https://hatiplong.com/mendampingi-korban-kekerasan-seksual" target="_blank" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=400&h=200&fit=crop" alt="Hukum perlindungan anak" style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="article-content">
+                            <h5 class="article-title">Hukum Perlindungan Anak di Indonesia</h5>
+                            <p class="article-excerpt">Pemahaman komprehensif tentang undang-undang perlindungan anak dan implementasinya...</p>
+                            <div class="article-meta">
+                                <i class="fas fa-calendar me-2"></i>5 Maret 2024
+                                <i class="fas fa-user ms-3 me-2"></i>Adv. Maria Sari
+                            </div>
+                            <a href="https://sapdajogja.org/2024/02/mengenal-dasar-hukum-perlindungan-perempuan-anak-disabilitas-dari-kekerasan/" target="_blank" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotline Section -->
+    <section id="hotline" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Hotline Darurat</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="emergency-section">
+                        <div class="emergency-title">
+                            <i class="fas fa-phone me-2"></i>
+                            Nomor Darurat 24/7
+                        </div>
+                        <p>Hubungi nomor-nomor berikut untuk bantuan darurat. Tim profesional kami siap membantu kapan saja.</p>
+                        <div class="hotline-numbers">
+                            <div class="hotline-item">
+                                <span class="hotline-number">119</span>
+                                <span class="hotline-label">Hotline Nasional</span>
+                            </div>
+                            <div class="hotline-item">
+                                <span class="hotline-number">081-2345-6789</span>
+                                <span class="hotline-label">DEKAP Crisis Center</span>
+                            </div>
+                            <div class="hotline-item">
+                                <span class="hotline-number">0800-1234-567</span>
+                                <span class="hotline-label">Konseling Psikologi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <h4>Layanan Tersedia</h4>
+                        <ul class="text-start">
+                            <li>Konsultasi hukum gratis</li>
+                            <li>Dukungan psikologis</li>
+                            <li>Pendampingan korban</li>
+                            <li>Rujukan ke layanan medis</li>
+                            <li>Koordinasi dengan penegak hukum</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-section">
+                        <h5 class="footer-title">DEKAP</h5>
+                        <p>Platform terpercaya untuk perlindungan, edukasi, dan dukungan korban kekerasan anak dan perempuan.</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/dekapindonesia" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.twitter.com/dekapindonesia" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/dekapindonesia" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/c/dekapindonesia" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-section">
+                        <h5 class="footer-title">Layanan</h5>
+                        <ul class="footer-links">
+                            <li><a href="#pelaporan">Pelaporan</a></li>
+                            <li><a href="#edukasi">Edukasi</a></li>
+                            <li><a href="#artikel">Artikel</a></li>
+                            <li><a href="#hotline">Hotline</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-section">
+                        <h5 class="footer-title">Kontak</h5>
+                        <p><i class="fas fa-map-marker-alt me-2"></i>Jl. Perlindungan No. 123, Jakarta</p>
+                        <p><i class="fas fa-phone me-2"></i>+62 21 1234 5678 - Arini Mayang Pauni</p>
+                        <p><i class="fas fa-envelope me-2"></i>info@dekap.org</p>
+                        <p><i class="fas fa-globe me-2"></i><a href="https://www.kemenpppa.go.id" target="_blank" style="color: #BDC3C7;">www.kemenpppa.go.id</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 DEKAP - Deteksi dan Edukasi Kekerasan Anak dan Perempuan. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">
+                        <i class="fas fa-user me-2"></i>Masuk ke Akun DEKAP
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">
+                                Ingat saya
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-submit w-100">Masuk</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none">Lupa password?</a>
+                        <br>
+                        <small>Belum punya akun? <a href="#" class="text-decoration-none">Daftar di sini</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Report -->
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportModalLabel">
+                        <i class="fas fa-flag me-2"></i>Formulir Pelaporan Kekerasan
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Catatan:</strong> Semua informasi yang Anda berikan akan dijaga kerahasiaannya dan ditangani oleh tim profesional kami.
+                    </div>
+                    <form id="reportForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="reporterName" class="form-label">Nama Pelapor (Opsional)</label>
+                                    <input type="text" class="form-control" id="reporterName" placeholder="Bisa dikosongkan untuk laporan anonim">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="reporterPhone" class="form-label">No. Telepon</label>
+                                    <input type="tel" class="form-control" id="reporterPhone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="incidentType" class="form-label">Jenis Kekerasan</label>
+                            <select class="form-control" id="incidentType" required>
+                                <option value="">Pilih jenis kekerasan</option>
+                                <option value="fisik">Kekerasan Fisik</option>
+                                <option value="psikis">Kekerasan Psikis</option>
+                                <option value="seksual">Kekerasan Seksual</option>
+                                <option value="ekonomi">Kekerasan Ekonomi</option>
+                                <option value="penelantaran">Penelantaran</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="victimInfo" class="form-label">Informasi Korban</label>
+                            <textarea class="form-control" id="victimInfo" rows="3" placeholder="Usia, jenis kelamin, hubungan dengan pelapor, dll." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="incidentDescription" class="form-label">Deskripsi Kejadian</label>
+                            <textarea class="form-control" id="incidentDescription" rows="4" placeholder="Jelaskan kronologi kejadian secara detail..." required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="incidentDate" class="form-label">Tanggal Kejadian</label>
+                                    <input type="date" class="form-control" id="incidentDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="incidentLocation" class="form-label">Lokasi Kejadian</label>
+                                    <input type="text" class="form-control" id="incidentLocation" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="additionalInfo" class="form-label">Informasi Tambahan</label>
+                            <textarea class="form-control" id="additionalInfo" rows="3" placeholder="Bukti, saksi, atau informasi lain yang relevan..."></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="confirmReport" required>
+                            <label class="form-check-label" for="confirmReport">
+                                Saya menyatakan bahwa informasi yang diberikan adalah benar dan dapat dipertanggungjawabkan.
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-submit w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Kirim Laporan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Images Section -->
+    <section class="section bg-light" style="display: none;" id="resourceImages">
+        <div class="container">
+            <h2 class="section-title">Galeri Kegiatan</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=250&fit=crop" class="card-img-top" alt="Workshop Pencegahan Kekerasan">
+                        <div class="card-body">
+                            <h5 class="card-title">Workshop Pencegahan Kekerasan</h5>
+                            <p class="card-text">Kegiatan edukasi untuk orang tua dan guru tentang cara mencegah kekerasan pada anak.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=250&fit=crop" class="card-img-top" alt="Kampanye Perlindungan Anak">
+                        <div class="card-body">
+                            <h5 class="card-title">Kampanye Perlindungan Anak</h5>
+                            <p class="card-text">Sosialisasi hak-hak anak dan pentingnya lingkungan yang aman untuk tumbuh kembang.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop" class="card-img-top" alt="Pelatihan Konselor">
+                        <div class="card-body">
+                            <h5 class="card-title">Pelatihan Konselor</h5>
+                            <p class="card-text">Program pelatihan untuk meningkatkan kapasitas konselor dalam menangani kasus kekerasan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handlers
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Fitur login sedang dalam pengembangan. Silakan hubungi admin untuk akses.');
+        });
+
+        document.getElementById('reportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Laporan Anda telah berhasil dikirim. Tim kami akan segera menindaklanjuti. Terima kasih atas kepercayaan Anda.');
+            this.reset();
+            bootstrap.Modal.getInstance(document.getElementById('reportModal')).hide();
+        });
+
+        // Counter animation
+        function animateCounter() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/[^0-9]/g, ''));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = counter.textContent.replace(/[0-9,]+/, target.toLocaleString());
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = counter.textContent.replace(/[0-9,]+/, Math.floor(current).toLocaleString());
+                    }
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.stats-section'));
+
+        // Add active class to current navigation item
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
